@@ -1,0 +1,44 @@
+.github-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.remove-button {
+  margin-left: auto;
+}
+
+mat-panel-description.mat-expansion-panel-header-description.ng-tns-c14-1 {
+  justify-content: right;
+}
+.panel-content {
+  justify-content: right;
+}
+.panel-content-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel-content-login button {
+  margin-bottom: 10px;
+}
+.px-10{
+  padding: 0 10px;
+}
+.px-5{
+  padding: 0 5px;
+}
+.header {
+  padding: 20px;
+}
+.m20 {
+  margin: 10px;
+}
+
+.login-text {
+  font-weight: 500;
+  font-size: 16px;
+}

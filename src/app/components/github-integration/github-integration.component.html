@@ -1,0 +1,36 @@
+<div>
+  <mat-expansion-panel class="m20">
+    <mat-expansion-panel-header class="header">
+      <mat-panel-title>
+        <img class="px-5" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20px" height="20px" alt="icon">
+        <b class="px-5">Github</b>
+        <mat-icon *ngIf="isConnected" [ngStyle]="{color: 'green'}" class="check-icon px-5">check_circle</mat-icon>
+        <mat-icon *ngIf="isConnected;" class="sync-icon px-5">sync</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description>
+        <div *ngIf="isConnected;">
+          <span class="admin-text">Admin:</span>
+          <span class="last-synced-text px-10">  Last Synced: {{ formattedConnectedAt }}</span><br/>
+          <span class="sync-type-text">Sync Type: full</span>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="panel-content" *ngIf="isConnected;">
+
+      <app-organization></app-organization>
+
+      <button mat-raised-button color="primary" (click)="disconnect()">
+        Remove
+      </button>
+    </div>
+    <div *ngIf="!isConnected;" class="panel-content-login">
+      <button mat-raised-button color="primary" (click)="connect()">
+        Connect
+      </button>
+      <p class="login-text">Connect Sredio to Github</p>
+    </div>
+  </mat-expansion-panel>
+</div>
+
+
