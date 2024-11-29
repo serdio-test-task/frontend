@@ -13,4 +13,7 @@ export class OrganizationService {
   getOrganizations(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/orgs`, { withCredentials: true });
   }
+  getRepoDetails(orgName: string, repoName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/repos/${orgName}/${repoName}/details`, { withCredentials: true });
+  }
 }

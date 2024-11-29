@@ -1,12 +1,15 @@
 <div style="position: relative; width: 100%; height: 100%;">
   <h1>Github Projects: <mat-icon class="download-icon px-5">download</mat-icon></h1>
 
+
   <ag-grid-angular
-    class="ag-theme-alpine"
+    [gridOptions]="gridOptions"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
-    style="width: 100%; height: 400px;"
-  ></ag-grid-angular>
+    (selectionChanged)="onRepoSelectionChange($event)"
+    class="ag-theme-alpine"
+    style="width: 100%; height: 500px;">
+  </ag-grid-angular>
 </div>
 
 
