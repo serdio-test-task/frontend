@@ -101,7 +101,6 @@ export class OrganizationComponent implements OnInit {
               repo.commits = details.commits.length;
               repo.pullRequests = details.pullRequests.length;
               repo.issues = details.issues.length;
-              debugger
               event.api.refreshCells({ rowNodes: [repo] });
               for (const key in details.userStats) {
                 const selectedObject = details.userStats[key];
