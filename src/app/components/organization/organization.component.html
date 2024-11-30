@@ -1,15 +1,24 @@
-<div style="position: relative; width: 100%; height: 100%;">
-  <h1>Github Projects: <mat-icon class="download-icon px-5">download</mat-icon></h1>
+<div style="width: 100%; height: 100%;">
+    <h1>GitHub Organizations</h1>
 
+    <!-- Repositories Grid -->
+    <ag-grid-angular
+            [gridOptions]="gridOptions"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            (selectionChanged)="onRepoSelectionChange($event)"
+            class="ag-theme-alpine"
+            style="width: 100%">
+    </ag-grid-angular>
 
-  <ag-grid-angular
-    [gridOptions]="gridOptions"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    (selectionChanged)="onRepoSelectionChange($event)"
-    class="ag-theme-alpine"
-    style="width: 100%; height: 500px;">
-  </ag-grid-angular>
+    <h2 class="mt-20">User-Level Stats</h2>
+
+    <!-- Aggregated Stats Grid -->
+    <ag-grid-angular
+            [gridOptions]="gridOptions"
+            [rowData]="userStats"
+            [columnDefs]="statsColumnDefs"
+            class="ag-theme-alpine"
+            style="width: 100%">
+    </ag-grid-angular>
 </div>
-
-
