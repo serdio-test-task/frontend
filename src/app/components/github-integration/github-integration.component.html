@@ -4,7 +4,7 @@
       <mat-panel-title>
         <img class="px-5" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20px" height="20px" alt="icon">
         <b class="px-5">Github</b>
-        <mat-icon *ngIf="isConnected" [ngStyle]="{color: 'green'}" class="check-icon px-5">check_circle</mat-icon>
+        <mat-icon *ngIf="isConnected" [ngStyle]="isConnected ? {color: 'green'} : {}" class="check-icon px-5">check_circle</mat-icon>
         <mat-icon *ngIf="isConnected;" class="sync-icon px-5">sync</mat-icon>
       </mat-panel-title>
       <mat-panel-description>
