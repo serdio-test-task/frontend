@@ -8,14 +8,15 @@
             [columnDefs]="columnDefs"
             (selectionChanged)="onRepoSelectionChange($event)"
             class="ag-theme-alpine"
-            style="width: 100%">
+            style="width: 100%"
+    >
     </ag-grid-angular>
 
     <h2 class="mt-20">User-Level Stats</h2>
 
     <!-- Aggregated Stats Grid -->
     <ag-grid-angular
-            [gridOptions]="gridOptions"
+            [gridOptions]="stategridOptions"
             [rowData]="userStats"
             [columnDefs]="statsColumnDefs"
             class="ag-theme-alpine"

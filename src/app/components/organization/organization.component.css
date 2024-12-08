@@ -3,3 +3,7 @@
 .mt-20 {
     margin-top: 20px;
 }
+
+.ag-cell-value input[type="checkbox"] {
+    display: none !important;
+}
