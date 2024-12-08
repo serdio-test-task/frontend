@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrganizationService } from 'src/app/services/organization.service';
 import {
-  GridOptions
+  GridOptions, GridReadyEvent
 } from "ag-grid-community";
 @Component({
   selector: 'app-organization',
@@ -40,12 +40,14 @@ export class OrganizationComponent implements OnInit {
     { headerName: 'Total Pull Requests', field: 'totalPullRequests', sortable: true, filter: true, width: 300 },
     { headerName: 'Total Issues', field: 'totalIssues', sortable: true, filter: true, width: 300 },
   ];
+  onGridReady(params: GridReadyEvent): void {
+    this.stategridOptions.api = params.api; // Assign the API to grid options
+  }
   constructor(private orgService: OrganizationService) {
     this.gridOptions = {
       paginationPageSize: 10,
       rowSelection: 'multiple',
       overlayLoadingTemplate: '<span class="ag-overlay-loading-center">Loading...</span>',
-
       domLayout: 'autoHeight',
       getRowId: ({ data }: any) => {
         console.log('Row data:', data); // Log the row data to check its structure
@@ -102,10 +104,35 @@ export class OrganizationComponent implements OnInit {
    */
   onRepoSelectionChange(event: any): void {
     const selectedNodes = event.api.getSelectedNodes();
-    this.userStats = []
-    if (this.stategridOptions.api) {
-      this.stategridOptions.api.showLoadingOverlay();
-    }
+
+    this.userStats = []; // Temporarily clear the data
+
+    // Update userStats with reset values
+    this.userStats = this.userStats.map((stat) => {
+      return {
+        ...stat,
+        totalCommits: 0,
+        totalPullRequests: 0,
+        totalIssues: 0,
+      };
+    });
+
+
+    setTimeout(() => {
+
+      if (this.stategridOptions.api) {
+        this.stategridOptions.api.showLoadingOverlay();
+      }
+
+
+      // Ensure the updated data is applied to the grid
+      // if (this.stategridOptions.api) {
+      //   this.stategridOptions.api.setRowData(this.userStats); // Set updated row data
+      //   this.stategridOptions.api.hideOverlay(); // Hide the overlay after data is set
+      // }
+    }, 0);
+
+
 
     this.rowData.forEach((repo: any) => {
       const isChecked = event.api.getSelectedNodes().some((node: any) => node.data.id === repo.id);
@@ -150,7 +177,7 @@ export class OrganizationComponent implements OnInit {
       }
     });
     if (this.stategridOptions.api) {
-      this.stategridOptions.api.hideOverlay();
+      // this.stategridOptions.api.hideOverlay();
     }
   }
 

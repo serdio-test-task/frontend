@@ -19,6 +19,7 @@
             [gridOptions]="stategridOptions"
             [rowData]="userStats"
             [columnDefs]="statsColumnDefs"
+            (gridReady)="onGridReady($event)"
             class="ag-theme-alpine"
             style="width: 100%">
     </ag-grid-angular>
